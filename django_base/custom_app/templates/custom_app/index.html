@@ -1,0 +1,25 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}The Page Title{% endblock %}
+{% block jsext %}
+
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css">
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>Hello World</h1>
+        <h2>My variable: {{my_variable}}</h2>
+    </div>
+</div>
+
+{% endblock %}
