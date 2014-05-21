@@ -27,17 +27,27 @@ TEMPLATE_DEBUG = True
 ALLOWED_HOSTS = []
 
 
+# Email
+if DEBUG:
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_PORT = 587
+    EMAIL_HOST_USER = 'gmail_username'
+    EMAIL_HOST_PASSWORD = 'gmail_password'
+    EMAIL_USE_TLS = True
+    DEFAULT_FROM_EMAIL = 'gmail_email_address_for_display'
+
 # Application definition
 
 INSTALLED_APPS = (
+    'django_base',
+    'custom_app',
+
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'django_base',
-    'custom_app',
 )
 
 MIDDLEWARE_CLASSES = (
@@ -82,3 +92,5 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/1.6/howto/static-files/
 
 STATIC_URL = '/static/'
+
+AUTH_PROFILE_MODULE = 'django_base.UserProfile'

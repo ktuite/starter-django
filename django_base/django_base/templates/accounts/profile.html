@@ -1,0 +1,29 @@
+{% extends 'base.html' %}
+{% load staticfiles %}
+{% block title %}Profile{% endblock %}
+{% block jsext %}
+
+<script type="text/javascript">
+
+</script>
+
+<style type="text/css">
+
+</style>
+
+{% endblock %}
+
+{% block content %}
+
+<div class="row">
+    <div class="col-md-12">
+        <h1>
+            Profile for {{request.user.username}}
+            <small>(<a href="{% url 'edit_profile' %}">edit</a>)</small>
+        </h1>
+        <h4>Email: {{request.user.email}}</h4>
+        <h4>Country: {{request.user.userprofile.country}}</h4>
+    </div>
+</div>
+
+{% endblock %}

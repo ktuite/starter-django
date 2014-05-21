@@ -43,6 +43,30 @@ Things to customize:
 
 ![Basic Django Site Up and Running](screenshots/helloworld.png)
 
+## How I added Login Stuff
+
+### Step 1: Set up the database (let django automatically create user tables) and create a super user account
+
+    python manage.py syncdb
+
+### Step 2: Set up the right URLs and built-in django views
+* Some of the views are things that django already handles and some are things I have to make myself.
+* Most templates django doesn't really have alreadly (except for the admin password reset form) so I had to remake those.
+* I had a version of all this code cobbled together, so I copied it and cleaned it up and made sure it all worked.
+* make sure order of INSTALLED_APPS has our apps at the top so the django admin password reset doesnt clobber them
+
+### Step 3: Add a custom/extended UserProfile object that stores extra information about a user
+* Look in `django_base/models.py` ... there are some extra functions that tell django to automatically make this extra user information object when a new user is created.
+* After adding this and trying to edit my own profile, I got this error: _User has no userprofile._ 
+    * It's a special extra field attached to my user, which was made before this extra info existed, so I just deleted the database, reran `syncdb`, and remade my user.
+
+### Step 4: Add sign in and current user to header
+
+![Signin page](screenshots/signin.png)
+![Editing Extended Profile](screenshots/editprofile.png)
+![Password Reset](screenshots/passwordreset.png)
+
+
 ### Notable files
 
 *django_base/settings.py*
